@@ -174,7 +174,7 @@
                   const ramUsage = isNaN(ramUsageRaw) ? '0 B' : formatBytes(ramUsageRaw);
                   const ramLimitRaw = stats.memory_stats.limit / 1024;
                   const ramLimit = isNaN(ramLimitRaw) ? '0 B' : formatBytes(ramLimitRaw);
-                  ramUsageElement.textContent = ramUsage + ' RAM Usage';
+                  ramUsageElement.textContent = ramUsage + ' <%= req.translations.RamUsage %>';
             
                   // Determine status based on RAM usage
                   if (isNaN(ramUsageRaw)) {
@@ -193,7 +193,7 @@
                   const cpuUsagePercent = (cpuDelta && systemCpuDelta && !isNaN(cpuDelta) && !isNaN(systemCpuDelta))
                     ? ((cpuDelta / systemCpuDelta) * 100).toFixed(2) + '%'
                     : '0%';
-                  cpuUsageElement.textContent = cpuUsagePercent + ' CPU Usage';
+                  cpuUsageElement.textContent = cpuUsagePercent + ' <%= req.translations.CPUUsage %>';
                 };
               });
             });
@@ -312,7 +312,7 @@
                 const ramUsage = isNaN(ramUsageRaw) ? '0 B' : formatBytes(ramUsageRaw);
                 const ramLimitRaw = stats.memory_stats.limit / 1024;
                 const ramLimit = isNaN(ramLimitRaw) ? '0 B' : formatBytes(ramLimitRaw);
-                ramUsageElement.textContent = ramUsage + ' RAM Usage';
+                ramUsageElement.textContent = ramUsage + ' <%= req.translations.RamUsage %>';
 
                 // Determine status based on RAM usage
                 if (isNaN(ramUsageRaw)) {
@@ -331,7 +331,7 @@
                 const cpuUsagePercent = (cpuDelta && systemCpuDelta && !isNaN(cpuDelta) && !isNaN(systemCpuDelta))
                   ? ((cpuDelta / systemCpuDelta) * 100).toFixed(2) + '%'
                   : '0%';
-                cpuUsageElement.textContent = cpuUsagePercent + ' CPU Usage';
+                cpuUsageElement.textContent = cpuUsagePercent + ' <%= req.translations.CPUUsage %>';
               };
             });
           });

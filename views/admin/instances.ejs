@@ -51,7 +51,7 @@
         </colgroup>
         <thead class="border-b border-white/5 text-sm leading-6 text-white">
           <tr>
-            <th scope="col" class="py-2 pl-4 pr-8 font-medium sm:pl-6 lg:pl-8"><%= req.translations.Name %></th>
+            <th scope="col" class="py-2 pl-4 pr-8 font-medium sm:pl-6 lg:pl-8"><%= req.translations.name %></th>
 			<th scope="col" class="py-2 pl-0 pr-8 font-medium sm:table-cell"><%= req.translations.Node %></th>
             <th scope="col" class="py-2 pl-0 pr-8 font-medium sm:table-cell"><%= req.translations.DockerId %></th>
             <th scope="col" class="py-2 pl-0 pr-4 text-right font-medium sm:pr-8 sm:text-left lg:pr-20"><%= req.translations.volumeslashmount %></th>
@@ -83,7 +83,7 @@
             <td class="py-4 pl-0 pr-4 text-right sm:pr-8 lg:pr-20">
               <div class="flex gap-x-3">
                 <button onclick="location.href='/admin/instance/delete/<%= instance.Id %>'" class="block rounded-xl bg-red-600 px-3 py-2 text-center text-sm font-medium text-white shadow-lg hover:bg-red-500 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                  <%= req.translations.removeButton %>
+                  <%= req.translations.remove %>
                 </button>
 
                 <% if (instance.suspended === true) { %>
@@ -104,7 +104,7 @@
                 <% } %>        
                 
                 <button onclick="location.href='/admin/instances/<%= instance.Id %>/edit'" class="block rounded-xl bg-white px-3 py-2 text-center text-sm font-medium text-neutral-800 shadow-lg hover:bg-neutral-100 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                  <%= req.translations.editButton %>
+                  <%= req.translations.edit %>
                 </button>
                 
               </div>
@@ -120,7 +120,7 @@
             <form>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.Name %>:</label>
+                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.name %>:</label>
                         <input id="name" class="rounded-xl focus:ring-transparent focus:border-transparent text-white text-sm mt-2 mb-4 w-full hover:bg-white/5 px-4 py-2 bg-neutral-900 placeholder:text-white/20 border border-white/5" placeholder="My instance">
                     </div>
                     <div>
@@ -165,7 +165,9 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <button id="createNodeBtn" type="button" class="block rounded-xl bg-white px-3 py-2 text-center text-sm font-medium text-neutral-800 shadow-lg hover:bg-neutral-200 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><%= req.translations.Create %></button>
+                    <button id="createNodeBtn" type="button" class="block rounded-xl bg-white px-3 py-2 text-center text-sm font-medium text-neutral-800 shadow-lg hover:bg-neutral-200 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                      <%= req.translations.create %>
+                    </button>
                 </div>
             </form>
         </div>
