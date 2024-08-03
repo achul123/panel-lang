@@ -17,7 +17,9 @@
            <p class="mt-1 tracking-tight text-sm text-neutral-500"><%= req.translations.instancesText %></p>
          </div>
          <div class="mt-4 sm:ml-8 sm:mt-0 sm:flex-none">
-           <button id="createButton" type="button" class="block rounded-xl bg-white px-3 py-2 text-center text-sm font-medium text-neutral-800 shadow-lg hover:bg-neutral-200 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><%= req.translations.createnewinstance %></button>
+           <button id="createButton" type="button" class="block rounded-xl bg-white px-3 py-2 text-center text-sm font-medium text-neutral-800 shadow-lg hover:bg-neutral-200 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <%= req.translations.createNewInstance %>
+          </button>
          </div>
        </div>
  <% if (req.query.err == "CREATED") { %>
@@ -52,9 +54,9 @@
         <thead class="border-b border-white/5 text-sm leading-6 text-white">
           <tr>
             <th scope="col" class="py-2 pl-4 pr-8 font-medium sm:pl-6 lg:pl-8"><%= req.translations.name %></th>
-			<th scope="col" class="py-2 pl-0 pr-8 font-medium sm:table-cell"><%= req.translations.Node %></th>
-            <th scope="col" class="py-2 pl-0 pr-8 font-medium sm:table-cell"><%= req.translations.DockerId %></th>
-            <th scope="col" class="py-2 pl-0 pr-4 text-right font-medium sm:pr-8 sm:text-left lg:pr-20"><%= req.translations.volumeslashmount %></th>
+		      	<th scope="col" class="py-2 pl-0 pr-8 font-medium sm:table-cell"><%= req.translations.node %></th>
+            <th scope="col" class="py-2 pl-0 pr-8 font-medium sm:table-cell"><%= req.translations.dockerID %></th>
+            <th scope="col" class="py-2 pl-0 pr-4 text-right font-medium sm:pr-8 sm:text-left lg:pr-20"><%= req.translations.volumeANDMount %></th>
           </tr>
         </thead>
         <tbody class="divide-y divide-white/5">
@@ -89,24 +91,19 @@
                 <% if (instance.suspended === true) { %>
                   <form action="/admin/instances/unsuspend/<%= instance.Id %>" method="POST">
                     <button type="submit" class="block rounded-xl bg-white px-3 py-2 text-center text-sm font-medium text-neutral-800 shadow-lg hover:bg-neutral-100 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                      <%= req.translations.unsuspendButton %>
+                      <%= req.translations.unsuspend %>
                     </button>
                   </form>
                 <% } else { %>
                   <form action="/admin/instances/suspend/<%= instance.Id %>" method="POST">
                     <button type="submit" class="block rounded-xl bg-white px-3 py-2 text-center text-sm font-medium text-neutral-800 shadow-lg hover:bg-neutral-100 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                      <%= req.translations.suspendButton %>
+                      <%= req.translations.suspend %>
                     </button>
-      
-                    
                   </form>
-
                 <% } %>        
-                
                 <button onclick="location.href='/admin/instances/<%= instance.Id %>/edit'" class="block rounded-xl bg-white px-3 py-2 text-center text-sm font-medium text-neutral-800 shadow-lg hover:bg-neutral-100 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                   <%= req.translations.edit %>
                 </button>
-                
               </div>
             </td>
           </tr>
@@ -124,7 +121,7 @@
                         <input id="name" class="rounded-xl focus:ring-transparent focus:border-transparent text-white text-sm mt-2 mb-4 w-full hover:bg-white/5 px-4 py-2 bg-neutral-900 placeholder:text-white/20 border border-white/5" placeholder="My instance">
                     </div>
                     <div>
-                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.User %>:</label>
+                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.user %>:</label>
                         <select style="background: #171717;" id="user" class="rounded-xl focus:ring-transparent focus:border-transparent text-white text-sm mt-2 mb-4 w-full hover:bg-white/5 px-4 py-2 bg-neutral-900 placeholder:text-white/20 border border-white/5">
                             <% users.forEach(function(user) { %>
                                 <option value="<%= user.userId %>"><%= user.username %></option>
@@ -140,7 +137,7 @@
                       </select>
                   </div>
                     <div>
-                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.Node %>:</label>
+                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.node %>:</label>
                         <select style="background: #171717;" id="node" class="rounded-xl focus:ring-transparent focus:border-transparent text-white text-sm mt-2 mb-4 w-full hover:bg-white/5 px-4 py-2 bg-neutral-900 placeholder:text-white/20 border border-white/5">
                             <% nodes.forEach(function(node) { %>
                                 <option value="<%= node.id %>"><%= node.name %></option>
@@ -148,11 +145,11 @@
                         </select>
                     </div>
                     <div>
-                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.Memory %> (MiB):</label>
+                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.memory %> (MiB):</label>
                         <input id="memory" class="rounded-xl focus:ring-transparent focus:border-transparent text-white text-sm mt-2 mb-4 w-full hover:bg-white/5 px-4 py-2 bg-neutral-900 placeholder:text-white/20 border border-white/5" placeholder="2048">
                     </div>
                     <div>
-                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.CPU_Threads %>:</label>
+                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.cpuThreads %>:</label>
                         <input id="cpu" class="rounded-xl focus:ring-transparent focus:border-transparent text-white text-sm mt-2 mb-4 w-full hover:bg-white/5 px-4 py-2 bg-neutral-900 placeholder:text-white/20 border border-white/5" placeholder="1">
                     </div>
                     <div>
@@ -160,7 +157,7 @@
                         <input id="ports" class="rounded-xl focus:ring-transparent focus:border-transparent text-white text-sm mt-2 mb-4 w-full hover:bg-white/5 px-4 py-2 bg-neutral-900 placeholder:text-white/20 border border-white/5" placeholder="25565:25565,8080:8080">
                     </div>
                     <div>
-                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.primary_port %>:</label>
+                        <label class="text-neutral-400 text-sm tracking-tight mb-2"><%= req.translations.primaryPort %>:</label>
                         <input id="primary" class="rounded-xl focus:ring-transparent focus:border-transparent text-white text-sm mt-2 mb-4 w-full hover:bg-white/5 px-4 py-2 bg-neutral-900 placeholder:text-white/20 border border-white/5" placeholder="25565">
                     </div>
                 </div>
